@@ -1,5 +1,5 @@
 //
-//  MovieCell.swift
+//  SeriesCell.swift
 //  GetMovies
 //
 //  Created by Roberto Cruz on 23/08/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieCell: UITableViewCell {
+class SeriesCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

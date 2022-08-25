@@ -56,12 +56,12 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xab-EX-rDy">
                                         <rect key="frame" x="0.0" y="0.0" width="187.5" height="31"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Visto"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Por Ver"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCv-dz-m1T">
                                         <rect key="frame" x="187.5" y="0.0" width="187.5" height="31"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Por ver"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Visto"/>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -92,6 +92,9 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="gyn-un-wod" id="HXu-Vz-UHS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iv8-DN-eNt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -248,10 +251,10 @@
             </objects>
             <point key="canvasLocation" x="1361" y="636"/>
         </scene>
-        <!--View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="Obn-hJ-JAF">
             <objects>
-                <viewController id="9Ko-MB-o7F" sceneMemberID="viewController">
+                <viewController id="9Ko-MB-o7F" customClass="SearchViewController" customModule="GetMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cbb-R4-gvG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -278,6 +281,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zD7-6y-NBZ"/>
+                    <connections>
+                        <outlet property="searchBar" destination="HY8-qC-38M" id="OHH-2X-L13"/>
+                        <outlet property="tableView" destination="rKm-sl-pfs" id="N6e-fM-QkU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ixU-Z9-POG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -356,6 +363,9 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="NFF-6D-uMj" id="km3-mR-IQi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1UQ-Ab-ZCm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

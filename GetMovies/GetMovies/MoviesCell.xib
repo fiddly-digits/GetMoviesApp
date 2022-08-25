@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="91" id="gIA-td-1gu" userLabel="Movies Cell" customClass="MoviesCell" customModule="GetMovies" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="380" height="91"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gIA-td-1gu" id="rZ3-i6-YoR">
+                <rect key="frame" x="0.0" y="0.0" width="380" height="91"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="42f-eu-uBF">
+                        <rect key="frame" x="20" y="5" width="59" height="81"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="59" id="eO0-hh-rKW"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="lS0-Of-Gkf">
+                        <rect key="frame" x="84" y="5" width="119" height="81"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKY-sP-t1Z">
+                                <rect key="frame" x="0.0" y="0.0" width="39.5" height="30.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIs-De-EGb">
+                                <rect key="frame" x="0.0" y="30.5" width="26.5" height="26"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zs3-f8-ozm">
+                                <rect key="frame" x="0.0" y="56.5" width="32" height="24.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" systemColor="systemGray2Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="kGB-9A-nbj">
+                        <rect key="frame" x="330" y="5" width="45" height="81"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILQ-Mj-dVL">
+                                <rect key="frame" x="0.0" y="0.0" width="45" height="31"/>
+                                <buttonConfiguration key="configuration" style="plain" image="checkmark.circle" catalog="system"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fg1-mQ-Bti">
+                                <rect key="frame" x="0.0" y="50" width="45" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                            </button>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="kGB-9A-nbj" secondAttribute="trailing" constant="5" id="0O0-5h-6HW"/>
+                    <constraint firstAttribute="bottom" secondItem="kGB-9A-nbj" secondAttribute="bottom" constant="5" id="1HX-0s-03Z"/>
+                    <constraint firstItem="kGB-9A-nbj" firstAttribute="leading" secondItem="lS0-Of-Gkf" secondAttribute="trailing" constant="127" id="OVZ-bJ-1Lm"/>
+                    <constraint firstItem="lS0-Of-Gkf" firstAttribute="leading" secondItem="42f-eu-uBF" secondAttribute="trailing" constant="5" id="OdT-GE-bhB"/>
+                    <constraint firstAttribute="bottom" secondItem="42f-eu-uBF" secondAttribute="bottom" constant="5" id="PV7-xc-xgt"/>
+                    <constraint firstItem="lS0-Of-Gkf" firstAttribute="top" secondItem="rZ3-i6-YoR" secondAttribute="top" constant="5" id="XMx-Nd-B3r"/>
+                    <constraint firstItem="kGB-9A-nbj" firstAttribute="top" secondItem="rZ3-i6-YoR" secondAttribute="top" constant="5" id="j0e-l3-znz"/>
+                    <constraint firstAttribute="bottom" secondItem="lS0-Of-Gkf" secondAttribute="bottom" constant="5" id="lxz-42-zTD"/>
+                    <constraint firstItem="42f-eu-uBF" firstAttribute="leading" secondItem="rZ3-i6-YoR" secondAttribute="leadingMargin" id="t2Z-1Y-pfC"/>
+                    <constraint firstItem="42f-eu-uBF" firstAttribute="top" secondItem="rZ3-i6-YoR" secondAttribute="top" constant="5" id="tgH-PX-Tmz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="2fh-R1-q2X"/>
+            <connections>
+                <outlet property="launchDateLabel" destination="OIs-De-EGb" id="7Mc-pX-pwC"/>
+                <outlet property="movieTitleLabel" destination="OKY-sP-t1Z" id="DS1-cS-0N0"/>
+            </connections>
+            <point key="canvasLocation" x="101" y="-11"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="checkmark.circle" catalog="system" width="128" height="121"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
