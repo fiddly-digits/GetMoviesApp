@@ -37,7 +37,7 @@ class Search {
             if let error = error as NSError?, error.code == -999 {
                 return // cancel search
             }
-            print(result!.results[0])
+            //print(result!.results[0])
 
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let result = result {
                 if result.results.isEmpty {

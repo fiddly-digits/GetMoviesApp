@@ -21,12 +21,13 @@
                         <rect key="frame" x="20" y="5" width="59" height="81"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="59" id="eO0-hh-rKW"/>
+                            <constraint firstAttribute="height" constant="81" id="nsi-2T-kzH"/>
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="lS0-Of-Gkf">
-                        <rect key="frame" x="84" y="5" width="119" height="81"/>
+                        <rect key="frame" x="84" y="5" width="241" height="81"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKY-sP-t1Z">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="OKY-sP-t1Z">
                                 <rect key="frame" x="0.0" y="0.0" width="39.5" height="30.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
@@ -47,14 +48,14 @@
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="kGB-9A-nbj">
-                        <rect key="frame" x="330" y="5" width="45" height="81"/>
+                        <rect key="frame" x="325" y="5" width="50" height="81"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILQ-Mj-dVL">
-                                <rect key="frame" x="0.0" y="0.0" width="45" height="31"/>
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="28"/>
                                 <buttonConfiguration key="configuration" style="plain" image="checkmark.circle" catalog="system"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fg1-mQ-Bti">
-                                <rect key="frame" x="0.0" y="50" width="45" height="31"/>
+                                <rect key="frame" x="0.0" y="47" width="50" height="34"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
                             </button>
@@ -64,7 +65,7 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="kGB-9A-nbj" secondAttribute="trailing" constant="5" id="0O0-5h-6HW"/>
                     <constraint firstAttribute="bottom" secondItem="kGB-9A-nbj" secondAttribute="bottom" constant="5" id="1HX-0s-03Z"/>
-                    <constraint firstItem="kGB-9A-nbj" firstAttribute="leading" secondItem="lS0-Of-Gkf" secondAttribute="trailing" constant="127" id="OVZ-bJ-1Lm"/>
+                    <constraint firstItem="kGB-9A-nbj" firstAttribute="leading" secondItem="lS0-Of-Gkf" secondAttribute="trailing" id="OVZ-bJ-1Lm"/>
                     <constraint firstItem="lS0-Of-Gkf" firstAttribute="leading" secondItem="42f-eu-uBF" secondAttribute="trailing" constant="5" id="OdT-GE-bhB"/>
                     <constraint firstAttribute="bottom" secondItem="42f-eu-uBF" secondAttribute="bottom" constant="5" id="PV7-xc-xgt"/>
                     <constraint firstItem="lS0-Of-Gkf" firstAttribute="top" secondItem="rZ3-i6-YoR" secondAttribute="top" constant="5" id="XMx-Nd-B3r"/>
@@ -77,6 +78,7 @@
             <viewLayoutGuide key="safeArea" id="2fh-R1-q2X"/>
             <connections>
                 <outlet property="launchDateLabel" destination="OIs-De-EGb" id="7Mc-pX-pwC"/>
+                <outlet property="movieImageView" destination="42f-eu-uBF" id="AqR-Yy-2Gg"/>
                 <outlet property="movieTitleLabel" destination="OKY-sP-t1Z" id="DS1-cS-0N0"/>
             </connections>
             <point key="canvasLocation" x="101" y="-11"/>

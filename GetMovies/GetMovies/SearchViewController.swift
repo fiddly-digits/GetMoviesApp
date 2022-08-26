@@ -9,6 +9,8 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    // TODO: - Create perform segue in order to launch flag to Search View Controller
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,6 +26,10 @@ class SearchViewController: UIViewController {
         //MARK: - Xib Registration
         var cellNib = UINib(nibName: "MoviesCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "MoviesCell")
+        cellNib = UINib(nibName: "LoadingCell", bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: "LoadingCell")
+        cellNib = UINib(nibName: "NothingFoundCell", bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: "NothingFoundCell")
     }
 }
 
@@ -71,12 +77,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             fatalError("\(Error.self)")
             
         case .loading:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MoviesCell", for: indexPath) as! MoviesCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingCell", for: indexPath)
+            let spinner = cell.viewWithTag(1000) as! UIActivityIndicatorView
+            spinner.startAnimating()
             return cell
             
         case .noResults:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MoviesCell", for: indexPath) as! MoviesCell
-            return cell
+            return tableView.dequeueReusableCell(withIdentifier: "NothingFoundCell", for: indexPath)
             
         case .results(let list):
             let cell = tableView.dequeueReusableCell(withIdentifier: "MoviesCell", for: indexPath) as! MoviesCell

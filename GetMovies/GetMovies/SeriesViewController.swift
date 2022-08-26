@@ -9,6 +9,8 @@ import UIKit
 
 class SeriesViewController: UIViewController {
     
+    // TODO: - Create perform segue in order to launch flag to Search View Controller
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
