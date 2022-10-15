@@ -87,7 +87,8 @@
                             <barButtonItem systemItem="add" id="h8K-n6-jLk"/>
                             <barButtonItem systemItem="search" id="bwd-aR-eC3">
                                 <connections>
-                                    <segue destination="9Ko-MB-o7F" kind="show" id="hMp-Zr-GHx"/>
+                                    <action selector="SearchButtonPressed:" destination="rD7-y7-fiP" id="rsL-Ui-Be6"/>
+                                    <segue destination="9Ko-MB-o7F" kind="show" identifier="movieSearch" id="i9m-o1-IRo"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -358,7 +359,7 @@
                             <barButtonItem systemItem="add" id="FU5-o1-lT1"/>
                             <barButtonItem systemItem="search" id="Yrv-DX-Jtj">
                                 <connections>
-                                    <segue destination="9Ko-MB-o7F" kind="show" id="OJ0-vP-dpW"/>
+                                    <segue destination="9Ko-MB-o7F" kind="show" identifier="seriesSearch" id="OJ0-vP-dpW"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -392,7 +393,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hMp-Zr-GHx"/>
+        <segue reference="i9m-o1-IRo"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="character.bubble" catalog="system" width="128" height="110"/>

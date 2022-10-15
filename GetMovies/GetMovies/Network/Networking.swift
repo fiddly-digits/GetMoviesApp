@@ -37,9 +37,13 @@ extension URLSession {
         }
     }
     
-    func emptyTask(with url: URL, completion: @escaping (Movie?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+    func emptyTask<T: Codable>(with url: URL, of type: T.Type = T.self, completion: @escaping (T?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         return self.codableTask(with: url, completion: completion)
     }
+    
+//    func emptyTask(with url: URL, completion: @escaping (Series?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+//        return self.codableTask(with: url, completion: completion)
+//    }
 
 }
 

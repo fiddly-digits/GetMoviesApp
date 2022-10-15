@@ -24,8 +24,13 @@ class MoviesViewController: UIViewController {
         var cellNib = UINib(nibName: "MoviesCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "MoviesCell")
     }
-}
 
+    
+    @IBAction func SearchButtonPressed(_ sender: UIBarButtonItem) {
+
+    }
+}
+    
 extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
@@ -38,4 +43,15 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+}
+
+extension MoviesViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "movieSearch" {
+            let searchIdentifier = "movie"
+            let destinationVC = segue.destination as! SearchViewController
+            destinationVC.searchIdentifier = searchIdentifier
+            print(searchIdentifier)
+        }
+    }
 }

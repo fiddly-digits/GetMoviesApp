@@ -9,7 +9,7 @@ import Foundation
 
 struct Series: Codable {
     let page: Int?
-    let results: [SeriesResult]?
+    let results: [SeriesResult]
     let totalPages, totalResults: Int?
 
     enum CodingKeys: String, CodingKey {
@@ -22,7 +22,7 @@ struct Series: Codable {
 struct SeriesResult: Codable {
     let backdropPath: String?
     let firstAirDate: String?
-    let genreIDS: [Int]?
+    let genreIDS: [Int]
     let id: Int?
     let name: String?
     let originCountry: [String]?

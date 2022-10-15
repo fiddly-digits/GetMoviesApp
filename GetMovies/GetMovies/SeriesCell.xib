@@ -24,7 +24,7 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Bsb-cQ-8Rz">
-                        <rect key="frame" x="84" y="5" width="119" height="81"/>
+                        <rect key="frame" x="84" y="5" width="120.5" height="81"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DuT-ib-50V">
                                 <rect key="frame" x="0.0" y="0.0" width="119" height="18.5"/>
@@ -64,14 +64,10 @@
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="ZZd-3p-H8W">
-                        <rect key="frame" x="330" y="5" width="45" height="81"/>
+                        <rect key="frame" x="331.5" y="5" width="43.5" height="81"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0W-K1-Gqy">
-                                <rect key="frame" x="0.0" y="0.0" width="45" height="31"/>
-                                <buttonConfiguration key="configuration" style="plain" image="checkmark.circle" catalog="system"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3C-RP-J9I">
-                                <rect key="frame" x="0.0" y="50" width="45" height="31"/>
+                                <rect key="frame" x="0.0" y="0.0" width="43.5" height="81"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
                             </button>
@@ -92,11 +88,16 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateTitleLabel" destination="XWP-S2-chA" id="F9e-KS-MlN"/>
+                <outlet property="episodeTitleLabel" destination="xsE-e2-IaC" id="qEl-3M-Su9"/>
+                <outlet property="seriesImageView" destination="ywW-2J-JJP" id="Thz-zS-bKj"/>
+                <outlet property="seriesTitleLabel" destination="uOO-P9-R4S" id="Pxk-Ys-wMS"/>
+            </connections>
             <point key="canvasLocation" x="175.36231884057972" y="128.23660714285714"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -15,17 +15,22 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private let search = Search()
+    var searchIdentifier: String = ""
+    var movies: Movie?
+    var series: Series?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
         tableView.dataSource = self
         tableView.delegate = self
-        searchBar.resignFirstResponder()
+        //searchBar.resignFirstResponder()
         
         //MARK: - Xib Registration
         var cellNib = UINib(nibName: "MoviesCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "MoviesCell")
+        cellNib = UINib(nibName: "SeriesCell", bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: "SeriesCell")
         cellNib = UINib(nibName: "LoadingCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "LoadingCell")
         cellNib = UINib(nibName: "NothingFoundCell", bundle: nil)
@@ -33,63 +38,153 @@ class SearchViewController: UIViewController {
     }
 }
 
+// TODO: Investigate why i need to double click to search
+
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        performSearch()
+        switch searchIdentifier {
+        case "movie":
+            performSearchMovies()
+        case "tv":
+            performSearchSeries()
+        default:
+            print("Error searchidentifier")
+            print(searchIdentifier)
+        }
+    }
+    func getMovies(completion: @escaping (Response<Movie>) -> Void) {
+        search.performSearch(for: searchBar.text!, page: 1, type: searchIdentifier, completion: completion)
+        print(searchIdentifier)
     }
     
-    func performSearch() {
-        search.performSearch(for: searchBar.text!, page: 1) { success in
-            if !success {
-                let alert = UIAlertController(title: "Error", message: NSLocalizedString("There was an error accessing the iTunes Store. Please try again", comment: "Error alert: message"), preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(action)
-                self.present(alert, animated: true, completion: nil)
+    func getSeries(completion: @escaping (Response<Series>) -> Void) {
+        search.performSearch(for: searchBar.text!, page: 1, type: searchIdentifier, completion: completion)
+        print(searchIdentifier)
+    }
+    
+    func performSearchMovies() {
+        getMovies { response in
+            switch response {
+            case .success(let movies):
+                self.movies = movies
+                //DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                //self.searchBar.resignFirstResponder()
+                //}
+            case .failure(let error):
+                print("**** \(error)")
             }
-            self.tableView.reloadData()
         }
-        tableView.reloadData()
-        searchBar.resignFirstResponder()
+    }
+    
+    func performSearchSeries() {
+        getSeries { response in
+            switch response {
+            case .success(let series):
+                self.series = series
+                //DispatchQueue.main.async {
+                    self.tableView.reloadData()
+               // self.searchBar.resignFirstResponder()
+                //}
+            case .failure(let error):
+                print("**** \(error)")
+            }
+        }
     }
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch search.state {
-        case .notSearchedYet:
-            return 0
-        case .loading:
-            print("Loading ")
-            return 1
-        case .noResults:
-            print("No results")
-            return 1
-        case .results(let list):
-            return list.count
+        //movies?.results.count ?? .zero
+        
+        switch searchIdentifier {
+        case "movie":
+            return movies?.results.count ?? .zero
+        case "tv":
+            return series?.results.count ?? .zero
+        default:
+            print("Error searchidentifier")
+            return .zero
         }
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch search.state {
-        case .notSearchedYet:
-            // Should never get here
-            fatalError("\(Error.self)")
-            
-        case .loading:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingCell", for: indexPath)
-            let spinner = cell.viewWithTag(1000) as! UIActivityIndicatorView
-            spinner.startAnimating()
-            return cell
-            
-        case .noResults:
-            return tableView.dequeueReusableCell(withIdentifier: "NothingFoundCell", for: indexPath)
-            
-        case .results(let list):
+        switch searchIdentifier {
+        case "movie":
             let cell = tableView.dequeueReusableCell(withIdentifier: "MoviesCell", for: indexPath) as! MoviesCell
-            let searchResult = list[indexPath.row]
-            cell.setCellWithValuesOf(searchResult)
+            let searchResult = self.movies?.results[indexPath.row]
+            cell.setCellWithValuesOf(searchResult!)
+            return cell
+        case "tv":
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SeriesCell", for: indexPath) as! SeriesCell
+            let searchResult = self.series?.results[indexPath.row]
+            cell.setCellWithValuesOf(searchResult!)
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NothingFoundCell", for: indexPath) as! NothingFoundCell
             return cell
         }
     }
+    
+    
 }
+//  extension SearchViewController: UISearchBarDelegate {
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        performSearch()
+//    }
+//
+//    func performSearch() {
+//        search.performSearch(for: searchBar.text!, page: 1) { success in
+//            if !success {
+//                let alert = UIAlertController(title: "Error", message: NSLocalizedString("There was an error accessing the iTunes Store. Please try again", comment: "Error alert: message"), preferredStyle: .alert)
+//                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+//                alert.addAction(action)
+//                self.present(alert, animated: true, completion: nil)
+//            }
+//            self.tableView.reloadData()
+//        }
+//        tableView.reloadData()
+//        searchBar.resignFirstResponder()
+//    }
+//}
+//
+//extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        switch search.state {
+//        case .notSearchedYet:
+//            return 0
+//        case .loading:
+//            print("Loading ")
+//            return 1
+//        case .noResults:
+//            print("No results")
+//            return 1
+//        case .results(let list):
+//            return list.count
+//        }
+//    }
+//
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        switch search.state {
+//        case .notSearchedYet:
+//            // Should never get here
+//            fatalError("\(Error.self)")
+//
+//        case .loading:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingCell", for: indexPath)
+//            let spinner = cell.viewWithTag(1000) as! UIActivityIndicatorView
+//            spinner.startAnimating()
+//            return cell
+//
+//        case .noResults:
+//            return tableView.dequeueReusableCell(withIdentifier: "NothingFoundCell", for: indexPath)
+//
+//        case .results(let list):
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "MoviesCell", for: indexPath) as! MoviesCell
+//            let searchResult = list[indexPath.row]
+//            cell.setCellWithValuesOf(searchResult)
+//            return cell
+//        }
+//    }
+//}

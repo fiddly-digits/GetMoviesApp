@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol searchDataDelegate {
+    func sendFlagToSearchViewController(data: String)
+}
+
 class SeriesViewController: UIViewController {
     
     // TODO: - Create perform segue in order to launch flag to Search View Controller
@@ -40,6 +44,15 @@ extension SeriesViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
         
     }
-    
-    
+}
+
+extension SeriesViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "seriesSearch" {
+            let searchIdentifier = "tv"
+            let destinationVC = segue.destination as! SearchViewController
+            destinationVC.searchIdentifier = searchIdentifier
+            print(searchIdentifier)
+        }
+    }
 }

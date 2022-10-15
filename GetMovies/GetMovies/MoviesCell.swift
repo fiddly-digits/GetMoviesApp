@@ -25,6 +25,8 @@ class MoviesCell: UITableViewCell {
     }
     
     func setCellWithValuesOf(_ movie: MovieResult) {
+        print("Los generos Son: \(movie.genreIDS.count)")
+        
         updateUI(title: movie.originalTitle, launchDate: movie.releaseDate, poster: movie.posterPath)
     }
     
